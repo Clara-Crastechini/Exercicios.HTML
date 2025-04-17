@@ -13,10 +13,11 @@
     </header>
 
     <main>
+        
         <p>
             Camiseta Preta - R$50 
-            <button onclick="adicionarAoCarrinho('Camiseta Preta', 50)">Adicionar</button>
-        </p>
+            <button onclick="adicionarAoCarrinho('Camiseta Preta', 50)">Adicionar</button>  
+        </p> 
 
         <p>
             Camiseta Branca - R$40 
@@ -33,24 +34,25 @@
     <script>
         let total = 0;
 
-        function adicionarAoCarrinho(nome, preco) {
-            let lista = document.getElementById('lista-carrinho');
-            let item = document.createElement('li');
-            item.textContent = `${nome} - R$ ${preco.toFixed(2)}`;
+        function adicionarAoCarrinho(nome, preco) { // dei parametros para poder chamar na function
+            let lista = document.getElementById('lista-carrinho'); // chamando id da lista no carrinho
+            let item = document.createElement('li'); // criando a lista 
+            item.textContent = `${nome} - R$ ${preco.toFixed(2)}`; // pegando as duas casa decimais
 
-            lista.appendChild(item);
+            lista.appendChild(item); // adiciona no final da lista
 
-            total += preco;
-            document.getElementById('total').textContent = total.toFixed(2);
+            total += preco; // soma com o valor atual
+            document.getElementById('total').textContent = total.toFixed(2); // // pegando as duas casa decimais
+
             
-            let botaoExcluir = document.createElement("button");
-            botaoExcluir.innerText = "Excluir";
-            item.appendChild(botaoExcluir);
+            let botaoExcluir = document.createElement("button"); //criacao do botao excluir
+            botaoExcluir.innerText = "Excluir"; // incluindo um texto no botao
+            item.appendChild(botaoExcluir); // adiciona o botao ao final
             
-            botaoExcluir.onclick = () => {
-                item.remove();
-                total -= preco;
-                document.getElementById('total').textContent = total.toFixed(2);
+            botaoExcluir.onclick = () => {  // funcao de remover item
+                item.remove(); // remove o item do carrinho
+                total -= preco; // subtrai o preco
+                document.getElementById('total').textContent = total.toFixed(2);  // pegando as duas casa decimais
 
             }
         }
